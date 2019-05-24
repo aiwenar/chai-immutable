@@ -17,6 +17,9 @@
   }
 }(this, function (Immutable) {
   return function (chai, utils) {
+    require('repr-format')
+    require('repr-format-immutable')
+
     var Assertion = chai.Assertion;
 
     function assertIsIterable(obj) {
@@ -105,8 +108,8 @@
             Immutable.is(obj, collection),
             'expected #{act} to equal #{exp}',
             'expected #{act} to not equal #{exp}',
-            collection.toString(),
-            obj.toString(),
+            collection,
+            obj,
             true
           );
         }
@@ -152,7 +155,7 @@
             'expected #{act} to include #{exp}',
             'expected #{act} to not include #{exp}',
             val,
-            obj.toString()
+            obj
           );
         }
         else _super.apply(this, arguments);
@@ -271,7 +274,7 @@
             'expected #{act} to ' + str,
             'expected #{act} to not ' + str,
             keys,
-            obj.toString()
+            obj
           );
         }
         else _super.apply(this, arguments);
